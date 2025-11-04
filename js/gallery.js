@@ -85,16 +85,18 @@ list.insertAdjacentHTML("beforeend", markup);
 
 list.addEventListener("click", (event) => {
     event.preventDefault();
-});
-
-list.addEventListener("click", (event) => {
-    event.preventDefault();
 
     if (event.target.nodeName !== "IMG") {
         return;
     }
-
+    
     const originalImage = event.target.dataset.source;
     console.log(originalImage);
-})
+
+    const instance = basicLightbox.create(`
+    <img src="${event.target.dataset.source}"  />
+`);
+    
+    instance.show()
+});
 
