@@ -97,6 +97,15 @@ list.addEventListener("click", (event) => {
     <img src="${event.target.dataset.source}"  />
 `);
     
-    instance.show()
+    instance.show();
+
+    const onPressEsc = event => {
+        if (event.key === "Escape") {
+            instance.close();
+            window.removeEventListener("keydown", onPressEsc);
+        }
+    };
+
+   window.addEventListener("keydown", onPressEsc);
 });
 
